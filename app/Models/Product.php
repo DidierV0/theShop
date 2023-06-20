@@ -13,9 +13,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'prix'];
+    protected $fillable = ['name',
+        'description',
+        'prix', 
+        'category_id', 
+        'user_id',
+        'defaultImage',
+        'carouselImage'];
 
     use HasFactory;
+
+    protected $cast = [
+        'carouselImage' => 'array'
+    ];
 
     public function user(): BelongsTo
     {
@@ -35,12 +45,6 @@ class Product extends Model
     public function favorie(): HasMany
     {
         return $this->hasMany(Favorie::class);
-    }
-
-
-    public function images(): HasMany
-    {
-        return $this->hasMany(ProductImage::class);
     }
 
 }
