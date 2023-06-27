@@ -2,6 +2,8 @@
 
 @section('main')
     
-    <h1>teste</h1>
+    <x-liste.products :products="$products"/>
+
+    
 
 @endsection

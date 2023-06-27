@@ -23,7 +23,7 @@ class Product extends Model
 
     use HasFactory;
 
-    protected $cast = [
+    protected $casts = [
         'carouselImage' => 'array'
     ];
 
