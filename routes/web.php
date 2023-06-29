@@ -23,6 +23,8 @@ Route::get('/',[ProductController::class,'index'])->name('accueil');
 
 Route::get('/category/{id}',[ProductController::class,'index'])->name('category');
 
+Route::get('/detail/{product}',[ProductController::class,'detail'])->name('detail');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

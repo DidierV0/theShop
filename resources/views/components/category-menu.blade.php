@@ -1,4 +1,4 @@
-<div>
+
     <!-- component -->
 <!-- follow me on twitter @asad_codes -->
 
@@ -22,4 +22,3 @@
     </section>
 
   
-</div>

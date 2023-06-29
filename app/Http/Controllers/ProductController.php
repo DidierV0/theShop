@@ -15,11 +15,15 @@ class ProductController extends Controller
                             ->paginate(6);
         } else {
             $products = Product::OrderBy('created_at','desc')->paginate(6);
-        }
-        
-        
-                            
+        }                  
 
         return view('welcome', compact('products'));
+    }
+
+    public function detail(Product $product = null)
+    {
+
+
+        return view('detail', compact('product'));
     }
 }
