@@ -19,7 +19,7 @@
                 <img class="object-center object-cover h-auto w-full" src="{{Storage::url($itemProducts->defaultImage)}}" alt="photo">
             </div>
             <div class="text-center py-8 sm:py-6">
-                <p class="text-xl text-gray-700 font-bold mb-2">{{$itemProducts->name}} </p>
+                <a href="{{route('detail', $itemProducts)}}"><p class="text-xl text-gray-700 font-bold mb-2">{{$itemProducts->name}} </p></a>
                 <p class="text-base text-gray-400 font-normal">{{$itemProducts->prix}}€</p>
             </div>
         </div>
