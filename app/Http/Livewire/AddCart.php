@@ -12,8 +12,15 @@ class AddCart extends Component
 
     public Product $product;
     
+    public $quantity = 1;
+    
     public function add()
     {
+
+        if (Auth::user() == null) {
+            
+            return redirect(route('login'));
+        }
         
         // vérification que le produit n'est pas déja exsistant 
         $cart = Cart::where('user_id', Auth::user()->id)
@@ -21,17 +28,25 @@ class AddCart extends Component
                     ->first();
 
                     if (isset($cart)) {
-                        # code...
+                        $cart->update([
+                            'quantity' => $this->quantity
+                        ]);
                     }else{
                         Cart::create([
                             'user_id'=> Auth::user()->id,
                             'product_id'=> $this->product->id,
-                            'quantity'=> 1,
+                            'quantity'=> $this->quantity,
                             'prix'=> $this->product->prix
 
                         ]);
                     }
     }
+
+    public function goToCart()
+    {
+        return redirect(route('cart'));
+    }
+
     public function render()
     {
         return view('livewire.add-cart');

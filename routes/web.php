@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::get('/cart/delete-one/{cart}', [CartController::class, 'deleteOne'])->name('delete-one');
+    Route::get('/cart/update/{cart}/{quantity}', [CartController::class, 'update'])->name('cart-update'); 
+    Route::get('/cart/delete', [CartController::class, 'delete'])->name('cart-delete');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
